@@ -323,7 +323,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 1.  User requests to add a person by adding employee details
 2.  System adds the person to the records.
 3.  System displays confirmation message.
-
     Use case ends.
 
 **Extensions**
@@ -332,32 +331,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 1a1. System displays an error message with the correct format.
     * 1a2. User enters new data.
       Steps 1a1-1a2 are repeated until the data entered are correct.
-      
       Use case resumes from step 2.
-      
-**Use case 2 (UC2): Delete employee**
-
-**MSS**
-
-1.  User requests to remove a person by passing the target employee's details
-2.  System removes the person from the records.
-3.  System displays confirmation message.
-4.  
-    Use case ends.
-
-**Extensions**
-
-* 1a. System detects an error (e.g. format/syntax error) in the entered data.
-    * 1a1. System displays an error message with the correct format.
-    * 1a2. User enters new data in the correct format.
-      Steps 1a1-1a2 are repeated until the data entered are correct.
-      
-      Use case resumes from step 2.
-      
-* 1b. System detects that there is no such matching employee in the list.
-    * 1b1. System displays an error message "Error: Employee (data) not found.
-
-      Use case ends.
 
 **Use case 4 (UC4): Search for an employee**
 
