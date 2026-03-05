@@ -4,7 +4,7 @@
   pageNav: 3
 ---
 
-# AB-3 Developer Guide
+# HRmanager Developer Guide
 
 <!-- * Table of Contents -->
 <page-nav-print />
@@ -316,11 +316,12 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 (For all use cases below, the **System** is the `HRmanager` and the **Actor** is the `user`, unless specified otherwise)
 
-**Use case 1 (UC1): Add employee**
+
+### Use case 1 (UC1): Add employee
 
 **MSS**
 
-1.  User requests to add a person by adding employee details
+1.  User requests to add a person by adding employee details.
 2.  System adds the person to the records.
 3.  System displays confirmation message.
 
@@ -331,18 +332,19 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 * 1a. System detects an error (e.g. format/syntax error) in the entered data.
     * 1a1. System displays an error message with the correct format.
     * 1a2. User enters new data.
-      Steps 1a1-1a2 are repeated until the data entered are correct.
+    Steps 1a1-1a2 are repeated until the data entered are correct.
       
-      Use case resumes from step 2.
+    Use case resumes from step 2.
       
-**Use case 2 (UC2): Delete employee**
+
+### Use case 2 (UC2): Delete employee
 
 **MSS**
 
 1.  User requests to remove a person by passing the target employee's details
 2.  System removes the person from the records.
 3.  System displays confirmation message.
-4.  
+
     Use case ends.
 
 **Extensions**
@@ -351,39 +353,55 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 1a1. System displays an error message with the correct format.
     * 1a2. User enters new data in the correct format.
       Steps 1a1-1a2 are repeated until the data entered are correct.
-      
-      Use case resumes from step 2.
+  
+    Use case resumes from step 2.
       
 * 1b. System detects that there is no such matching employee in the list.
     * 1b1. System displays an error message "Error: Employee (data) not found.
+      
+    Use case ends.
 
-      Use case ends.
 
-**Use case 4 (UC4): Search for an employee**
+### Use case 3 (UC3): View employees
+
+**MSS**
+
+1. User requests to view the list of employees.
+2. System retrieves the employee records and displays employee list.
+   
+   Use case ends.
+
+**Extensions**
+
+* 2a. There are no employees stored in the system.
+    * 2a1. System displays an empty employee list.
+  
+    Use case ends
+
+
+### Use case 4 (UC4): Search for an employee
 
 **MSS**
 
 1.  User requests a search for employee(s).
 2.  System processes the search query against the existing employee records.
 3.  System displays a list of all employees that match the search.
-
+    
     Use case ends.
 
 **Extensions**
 
 * 1a. The user executes the search with invalid command
     * 1a1. System displays an error message indicating that search command is invalid, with guide on how to properly form it.
-    
-      Use case resumes at step 1.
+      
+    Use case resumes at step 1.
 
 * 2a. No employees match the provided search query.
-    * 2a1. System displays a message indicating that the search yielded no results (e.g., "0 employees listed!").
-    
-      Use case ends.
+    * 2a1. System displays a message indicating that the search yielded no results (e.g., "0 employees listed!"). 
+      
+    Use case ends.
 
-**Use case: UC5 Tag an employee**
-**Preconditions: There are users in the HRManager**
-**Gurantees: Employee is updated with the new tag**
+### Use case 5 (UC5): Tag an employee
 
 **MSS**
 
@@ -393,43 +411,38 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 4. System requests for the tag name.
 5. User provides tag name.
 6. System adds the tag to the person and updates the list
+   
    Use case ends.
 
 **Extensions**
 
 * 2a. The list is empty.
-
-  Use case ends.
+    * 2a1. System informs user that there are no employees to tag.
+      
+    Use case ends.
 
 * 3a. The given index is invalid.
-
-    * 3a1. HRManager shows an error message.
-
-      Use case resumes at step 1.
+    * 3a1. System shows an error message.
+      
+    Use case resumes at step 1.
 
 * 5a. The tag name provided is already associated with this person.
-
-    * 5a1. HRManager shows an error message indicating the tag is a duplicate.
-
-      Use case resumes at step 2.
+    * 5a1. System shows an error message indicating the tag is a duplicate.
+      
+    Use case resumes at step 2.
 
 * 5b. The tag name provided is invalid (e.g., blank or contains forbidden characters).
-
-    * 5b1. HRManager shows an error message describing valid tag format.
-
-      Use case resumes at step 4.
+    * 5b1. System shows an error message describing valid tag format.
+      
+    Use case resumes at step 4.
 
 * a. At any time, the User chooses to cancel the tagging operation.
+    * a1. System cancels the tagging.
+    
+    Use case ends.
 
-    * a1. HRManager cancels the tagging.
 
-      Use case ends.
-
-**Use case: UC6 - Edit an employee's details**
-
-Preconditions: Employee to be edited exists in the list
-
-Guarantees: Employee's details will be edited to what the user entered
+### Use case 6 (UC6): Edit an employee's details
 
 **MSS**
 
@@ -441,16 +454,14 @@ Guarantees: Employee's details will be edited to what the user entered
 **Extensions**
 
 * 1a. The user enters the command in the incorrect format.
-
     * 1a1. System shows an error message.
-
-        Use case resumes at step 1.
+      
+    Use case resumes at step 1.
 
 * 3a. User's given details are invalid.
-
     * 3a1. System shows an error message.
-    
-        Use case resumes at step 3.
+      
+    Use case resumes at step 3.
 
 
 ### Non-Functional Requirements
