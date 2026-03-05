@@ -314,7 +314,72 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 ### Use cases
 
-(For all use cases below, the **System** is the `HRManager` and the **Actor** is the `user`, unless specified otherwise)
+(For all use cases below, the **System** is the `HRmanager` and the **Actor** is the `user`, unless specified otherwise)
+
+**Use case 1 (UC1): Add employee**
+
+**MSS**
+
+1.  User requests to add a person by adding employee details
+2.  System adds the person to the records.
+3.  System displays confirmation message.
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. System detects an error (e.g. format/syntax error) in the entered data.
+    * 1a1. System displays an error message with the correct format.
+    * 1a2. User enters new data.
+      Steps 1a1-1a2 are repeated until the data entered are correct.
+      
+      Use case resumes from step 2.
+      
+**Use case 2 (UC2): Delete employee**
+
+**MSS**
+
+1.  User requests to remove a person by passing the target employee's details
+2.  System removes the person from the records.
+3.  System displays confirmation message.
+4.  
+    Use case ends.
+
+**Extensions**
+
+* 1a. System detects an error (e.g. format/syntax error) in the entered data.
+    * 1a1. System displays an error message with the correct format.
+    * 1a2. User enters new data in the correct format.
+      Steps 1a1-1a2 are repeated until the data entered are correct.
+      
+      Use case resumes from step 2.
+      
+* 1b. System detects that there is no such matching employee in the list.
+    * 1b1. System displays an error message "Error: Employee (data) not found.
+
+      Use case ends.
+
+**Use case 4 (UC4): Search for an employee**
+
+**MSS**
+
+1.  User requests a search for employee(s).
+2.  System processes the search query against the existing employee records.
+3.  System displays a list of all employees that match the search.
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. The user executes the search with invalid command
+    * 1a1. System displays an error message indicating that search command is invalid, with guide on how to properly form it.
+    
+      Use case resumes at step 1.
+
+* 2a. No employees match the provided search query.
+    * 2a1. System displays a message indicating that the search yielded no results (e.g., "0 employees listed!").
+    
+      Use case ends.
 
 **Use case: UC5 Tag an employee**
 **Preconditions: There are users in the HRManager**
@@ -345,7 +410,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 * 5a. The tag name provided is already associated with this person.
 
     * 5a1. HRManager shows an error message indicating the tag is a duplicate.
-     
+
       Use case resumes at step 2.
 
 * 5b. The tag name provided is invalid (e.g., blank or contains forbidden characters).
@@ -360,7 +425,33 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case ends.
 
-*{More to be added}*
+**Use case: UC6 - Edit an employee's details**
+
+Preconditions: Employee to be edited exists in the list
+
+Guarantees: Employee's details will be edited to what the user entered
+
+**MSS**
+
+1. User requests to edit employee details.
+2. System searches for the employee (UC4).
+3. User enters the details to be updated.
+4. System edits the employee's details, and displays the updated employee information.
+
+**Extensions**
+
+* 1a. The user enters the command in the incorrect format.
+
+    * 1a1. System shows an error message.
+
+        Use case resumes at step 1.
+
+* 3a. User's given details are invalid.
+
+    * 3a1. System shows an error message.
+    
+        Use case resumes at step 3.
+
 
 ### Non-Functional Requirements
 
